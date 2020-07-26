@@ -2,6 +2,8 @@
 
 This is a Node-RED flow and example card to pull the latest Australia/Victoria COVID-19 stats from open datasets.
 
+![Covid-19 Example Card](covid-19-card.jpg)
+
 
 ## Dependencies
 
