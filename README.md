@@ -18,11 +18,9 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 
 ## Select your locale
 
-1. Open the Covid-19 Node-RED flow and add a `debug` node.
-2. Connect it to the output of the lowest `http request` node.
-3. Click deploy and inspect the debug output, searching the array output for your locale ID number.
-4. Once you have located your locale ID, delete the debug node, double click on the `local` node and change the ID to reflect your local (default is Moreland, 45).
-5. Deploy!
+1. Open the [Victorian Covid feed json](https://interactive.guim.co.uk/covidfeeds/victoria.json) and find the ID of your local.
+2. Open up the flow in Node-RED, double click on the `local` node and change the ID to reflect your local (default is Moreland, 45).
+3. Deploy!
 
 ![Covid-19 Flow](covid-19-flow.jpg)
 
