@@ -34,7 +34,6 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 To use my example card, you need the following custom cards from HACS:
  
  - mini-graph-card
- - horizontal-stack
  - vertical-stack
  
  Simple copy the code from the [card.yaml](card.yaml) file in this repository and paste it into a new manual entity.  
