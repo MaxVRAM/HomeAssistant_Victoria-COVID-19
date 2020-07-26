@@ -1,0 +1,662 @@
+[
+    {
+        "id": "40da5ad2.8aabf4",
+        "type": "tab",
+        "label": "Covid-19",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4f147b45.6d1a5c",
+        "type": "http request",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "https://raw.githubusercontent.com/covid-19-au/covid-19-au.github.io/prod/src/data/stateCaseData.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "d3ee7ba9.942948"
+            ]
+        ]
+    },
+    {
+        "id": "d3ee7ba9.942948",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.values[2]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "30249d2b.adadf2"
+            ]
+        ]
+    },
+    {
+        "id": "3af185ab.c301b2",
+        "type": "ha-entity",
+        "z": "40da5ad2.8aabf4",
+        "name": "COVID-19",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "COVID-19 Data"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": "mdi:virus"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            }
+        ],
+        "state": "payload[1]",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "state",
+                "value": "payload[0]",
+                "valueType": "msg"
+            },
+            {
+                "property": "cases",
+                "value": "payload[1]",
+                "valueType": "msg"
+            },
+            {
+                "property": "deaths",
+                "value": "payload[2]",
+                "valueType": "msg"
+            },
+            {
+                "property": "recovered",
+                "value": "payload[3]",
+                "valueType": "msg"
+            },
+            {
+                "property": "tested",
+                "value": "payload[4]",
+                "valueType": "msg"
+            },
+            {
+                "property": "active",
+                "value": "payload[5]",
+                "valueType": "msg"
+            },
+            {
+                "property": "hospital",
+                "value": "payload[6]",
+                "valueType": "msg"
+            },
+            {
+                "property": "icu",
+                "value": "payload[7]",
+                "valueType": "msg"
+            }
+        ],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 1290,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "366ac0f2.d26968",
+        "type": "inject",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "4f147b45.6d1a5c"
+            ]
+        ]
+    },
+    {
+        "id": "30249d2b.adadf2",
+        "type": "rbe",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "3af185ab.c301b2"
+            ]
+        ]
+    },
+    {
+        "id": "6aaac257.edb40c",
+        "type": "http request",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "https://raw.githubusercontent.com/covid-19-au/covid-19-au.github.io/prod/src/data/state.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            [
+                "708dcf8.64992b"
+            ]
+        ]
+    },
+    {
+        "id": "23c16912.20f496",
+        "type": "inject",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "6aaac257.edb40c"
+            ]
+        ]
+    },
+    {
+        "id": "482885aa.9fabbc",
+        "type": "comment",
+        "z": "40da5ad2.8aabf4",
+        "name": "Data Source Site",
+        "info": "Data source:\nhttps://github.com/covid-19-au/covid-19-au.github.io\n\nVictorian source:\nhttps://interactive.guim.co.uk/covidfeeds/victoria.json",
+        "x": 100,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "708dcf8.64992b",
+        "type": "split",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "6b07086b.e9416",
+                "43e54a6d.1e7fec"
+            ]
+        ]
+    },
+    {
+        "id": "6b07086b.e9416",
+        "type": "switch",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "msg.parts.count-1",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": true,
+        "outputs": 1,
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "8566b50c.4ba08"
+            ]
+        ]
+    },
+    {
+        "id": "43e54a6d.1e7fec",
+        "type": "switch",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "msg.parts.count-2",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": true,
+        "outputs": 1,
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "1cf85c8c.af49e3"
+            ]
+        ]
+    },
+    {
+        "id": "8566b50c.4ba08",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"VIC\"]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 240,
+        "wires": [
+            [
+                "86ba06fb.9b9af8"
+            ]
+        ]
+    },
+    {
+        "id": "1cf85c8c.af49e3",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"VIC\"]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 280,
+        "wires": [
+            [
+                "e38bafb5.12473"
+            ]
+        ]
+    },
+    {
+        "id": "2c15ebe.e559914",
+        "type": "function",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "func": "var value = {payload:(msg.payload.today[0]-msg.payload.yesterday[0])};\nreturn value;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1150,
+        "y": 260,
+        "wires": [
+            [
+                "4eeb6da3.14ce6c"
+            ]
+        ]
+    },
+    {
+        "id": "43d5e3ca.2cfd24",
+        "type": "join",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 260,
+        "wires": [
+            [
+                "2c15ebe.e559914"
+            ]
+        ]
+    },
+    {
+        "id": "e38bafb5.12473",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "yesterday",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 280,
+        "wires": [
+            [
+                "43d5e3ca.2cfd24"
+            ]
+        ]
+    },
+    {
+        "id": "86ba06fb.9b9af8",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "today",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 240,
+        "wires": [
+            [
+                "43d5e3ca.2cfd24"
+            ]
+        ]
+    },
+    {
+        "id": "4eeb6da3.14ce6c",
+        "type": "ha-entity",
+        "z": "40da5ad2.8aabf4",
+        "name": "COVID-19 New Cases",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "COVID-19 New"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": "mdi:virus"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 1320,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4141ba11.d94e34",
+        "type": "http request",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "https://interactive.guim.co.uk/covidfeeds/victoria.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "9f89f5ee.bb3dd8"
+            ]
+        ]
+    },
+    {
+        "id": "62431127.2d61d",
+        "type": "inject",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "4141ba11.d94e34"
+            ]
+        ]
+    },
+    {
+        "id": "9f89f5ee.bb3dd8",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "locale",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[45]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "5a22148b.f4b4ec"
+            ]
+        ]
+    },
+    {
+        "id": "5a22148b.f4b4ec",
+        "type": "rbe",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "payload",
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "977b4662.8b88"
+            ]
+        ]
+    },
+    {
+        "id": "977b4662.8b88",
+        "type": "change",
+        "z": "40da5ad2.8aabf4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.count",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "a95a84ad.096a78"
+            ]
+        ]
+    },
+    {
+        "id": "a95a84ad.096a78",
+        "type": "ha-entity",
+        "z": "40da5ad2.8aabf4",
+        "name": "COVID-19 Local",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "COVID-19 Local"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": "mdi:home"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 1300,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "878cd05b.e1db5",
+        "type": "comment",
+        "z": "40da5ad2.8aabf4",
+        "name": "Edit the above payload [<index>] to change the locale displayed",
+        "info": "",
+        "x": 430,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "dc09bc1e.a5f7f",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant",
+        "addon": true
+    }
+]
