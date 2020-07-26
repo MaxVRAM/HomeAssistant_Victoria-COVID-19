@@ -29,7 +29,7 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 
 ## Card example
 
-(image to come shortly)  
+(pictured at the top)  
 
 To use my example card, you need the following custom cards from HACS:
  
