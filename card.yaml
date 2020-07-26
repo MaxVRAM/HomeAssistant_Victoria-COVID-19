@@ -1,0 +1,64 @@
+cards:
+  - decimals: 0
+    entities:
+      - color: var(--colour-sunflower)
+        entity: sensor.covid_19_new
+        name: New Cases
+      - color: var(--colour-asbestos)
+        entity: sensor.covid_19_local
+        name: Local Cases
+        show_state: true
+        y_axis: secondary
+    font_size: 90
+    height: 100
+    hours_to_show: 168
+    line_width: 2
+    lower_bound: 0
+    lower_bound_secondary: 0
+    name: New State vs Total Local Cases (7 days)
+    points_per_hour: 0.04166666
+    show:
+      extrema: true
+      fill: true
+      icon: false
+      labels: true
+      lables_secondary: true
+      name: true
+      points: false
+    smoothing: true
+    type: 'custom:mini-graph-card'
+  - cards:
+      - entity: sensor.covid_19_data
+        name: Total Cases
+        type: entity
+      - attribute: deaths
+        entity: sensor.covid_19_data
+        icon: 'mdi:emoticon-dead-outline'
+        name: Deaths
+        type: entity
+    type: horizontal-stack
+  - cards:
+      - attribute: active
+        entity: sensor.covid_19_data
+        icon: 'mdi:thermometer'
+        name: Active
+        type: entity
+      - attribute: recovered
+        entity: sensor.covid_19_data
+        icon: 'mdi:emoticon-happy-outline'
+        name: Recovered
+        type: entity
+    type: horizontal-stack
+  - cards:
+      - attribute: hospital
+        entity: sensor.covid_19_data
+        icon: 'mdi:hospital-building'
+        name: Hospital Beds
+        type: entity
+      - attribute: icu
+        entity: sensor.covid_19_data
+        icon: 'mdi:hospital'
+        name: Critical Condition
+        type: entity
+    type: horizontal-stack
+type: vertical-stack
