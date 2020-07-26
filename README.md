@@ -36,3 +36,11 @@ To use my example card, you need the following custom cards from HACS:
  - vertical-stack
  
  Simple copy the code from the [card.yaml](card.yaml) file in this repository and paste it into a new manual entity.  
+ 
+ 
+ ## Resources
+ 
+ This project sources its Covid-19 data from the following sites updated daily:
+
+ - https://github.com/covid-19-au/covid-19-au.github.io
+ - https://interactive.guim.co.uk/covidfeeds/victoria.json
