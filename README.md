@@ -1,6 +1,6 @@
 # Victoria (AUS) COVID-19 Home Assistant Stats
 
-This is a Node-RED flow and example card to pull the latest Australia/Victoria COVID-19 stats from open datasets.
+This is a Node-RED flow and example card to pull the latest Australia/Victoria COVID-19 stats from open datasets. It contains both Victoria-wide and locale-based datasets.
 
 ![Covid-19 Example Card](covid-19-card.jpg)
 
@@ -18,8 +18,8 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 
 ## Select your locale
 
-1. Open the [Victorian Covid feed json](https://interactive.guim.co.uk/covidfeeds/victoria.json) and find the ID of your local.
-2. Open up the flow in Node-RED, double click on the `local` node and change the ID to reflect your local (default is Moreland, 45).
+1. Open the [Victorian Covid feed json](https://interactive.guim.co.uk/covidfeeds/victoria.json) and find the ID of your locale.
+2. Open up the flow in Node-RED, double click on the `locale` node and change the ID (default is Moreland, 45).
 3. Deploy!
 
 ![Covid-19 Flow](covid-19-flow.jpg)
