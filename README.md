@@ -22,7 +22,7 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 4. Once you have located your locale ID, delete the debug node, double click on the `local` node and change the ID to reflect your local (default is Moreland, 45).
 5. Deploy!
 
-![covid-19-flow.jpg]
+![Covid-19 Flow](covid-19-flow.jpg)
 
 
 ## Card example
