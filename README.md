@@ -3,6 +3,8 @@
 This is a Node-RED flow and example card to pull the latest Australia/Victoria COVID-19 stats from open datasets. It contains both Victoria-wide and locale-based datasets.
 
 ![Covid-19 Example Card](covid-19-card.jpg)
+ 
+ > Note that the graph card only displays a chart starting from the date you add the flow to your HA system.
 
 
 ## Dependencies
