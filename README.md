@@ -4,7 +4,7 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 
 ![Covid-19 Example Card](covid-19-card.jpg)
  
- > Note that the graph card only displays a chart starting from the date you add the flow to your HA system.
+ > Note that the graph card only displays a chart starting from the date you add the flow to your HA system.  
 
 
 ## Dependencies
@@ -36,7 +36,7 @@ To use my example card, you need the following custom cards from HACS:
  - mini-graph-card
  - vertical-stack
  
- Simple copy the code from the [card.yaml](card.yaml) file in this repository and paste it into a new manual entity.  
+ Simply copy the code from the [card.yaml](card.yaml) file in this repository and paste it into a new manual entity.  
  
  
  ## Resources
