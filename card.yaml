@@ -15,8 +15,8 @@ cards:
     line_width: 2
     lower_bound: 0
     lower_bound_secondary: 0
-    name: New State vs Total Local Cases (7 days)
-    points_per_hour: 0.04166666
+    name: Daily State Cases vs Total Local Cases
+    points_per_hour: 0.1
     show:
       extrema: true
       fill: true
