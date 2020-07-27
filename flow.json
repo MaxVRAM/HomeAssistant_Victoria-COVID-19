@@ -10,7 +10,7 @@
         "id": "4f147b45.6d1a5c",
         "type": "http request",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "state cases",
         "method": "GET",
         "ret": "obj",
         "paytoqs": false,
@@ -31,7 +31,7 @@
         "id": "d3ee7ba9.942948",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "just victoria data",
         "rules": [
             {
                 "t": "set",
@@ -130,7 +130,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1290,
+        "x": 1510,
         "y": 160,
         "wires": [
             []
@@ -166,7 +166,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 590,
+        "x": 610,
         "y": 160,
         "wires": [
             [
@@ -178,7 +178,7 @@
         "id": "6aaac257.edb40c",
         "type": "http request",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "state cases",
         "method": "GET",
         "ret": "obj",
         "paytoqs": false,
@@ -236,7 +236,7 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 550,
+        "x": 530,
         "y": 260,
         "wires": [
             [
@@ -249,7 +249,7 @@
         "id": "6b07086b.e9416",
         "type": "switch",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "today",
         "property": "parts.index",
         "propertyType": "msg",
         "rules": [
@@ -274,7 +274,7 @@
         "id": "43e54a6d.1e7fec",
         "type": "switch",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "yesterday",
         "property": "parts.index",
         "propertyType": "msg",
         "rules": [
@@ -287,7 +287,7 @@
         "checkall": "true",
         "repair": true,
         "outputs": 1,
-        "x": 690,
+        "x": 680,
         "y": 280,
         "wires": [
             [
@@ -299,7 +299,7 @@
         "id": "8566b50c.4ba08",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "only VIC data",
         "rules": [
             {
                 "t": "set",
@@ -326,7 +326,7 @@
         "id": "1cf85c8c.af49e3",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "only VIC data",
         "rules": [
             {
                 "t": "set",
@@ -353,11 +353,11 @@
         "id": "2c15ebe.e559914",
         "type": "function",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "today - yesterday",
         "func": "var value = {payload:(msg.payload.today[0]-msg.payload.yesterday[0])};\nreturn value;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1290,
+        "x": 1330,
         "y": 260,
         "wires": [
             [
@@ -397,7 +397,7 @@
         "id": "e38bafb5.12473",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "topic: yesterday",
         "rules": [
             {
                 "t": "set",
@@ -412,7 +412,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1010,
+        "x": 1020,
         "y": 280,
         "wires": [
             [
@@ -424,7 +424,7 @@
         "id": "86ba06fb.9b9af8",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "topic: today",
         "rules": [
             {
                 "t": "set",
@@ -439,7 +439,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1010,
+        "x": 1030,
         "y": 240,
         "wires": [
             [
@@ -482,7 +482,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1460,
+        "x": 1540,
         "y": 260,
         "wires": [
             []
@@ -492,7 +492,7 @@
         "id": "4141ba11.d94e34",
         "type": "http request",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "locale cases",
         "method": "GET",
         "ret": "obj",
         "paytoqs": false,
@@ -548,7 +548,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 410,
+        "x": 450,
         "y": 380,
         "wires": [
             [
@@ -566,7 +566,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 590,
+        "x": 610,
         "y": 380,
         "wires": [
             [
@@ -578,7 +578,7 @@
         "id": "977b4662.8b88",
         "type": "change",
         "z": "40da5ad2.8aabf4",
-        "name": "",
+        "name": "only case count data",
         "rules": [
             {
                 "t": "set",
@@ -593,7 +593,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
+        "x": 860,
         "y": 380,
         "wires": [
             [
@@ -636,7 +636,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1300,
+        "x": 1520,
         "y": 380,
         "wires": [
             []
@@ -648,7 +648,7 @@
         "z": "40da5ad2.8aabf4",
         "name": "Edit the above payload [<index>] to change the locale displayed",
         "info": "",
-        "x": 430,
+        "x": 450,
         "y": 440,
         "wires": []
     },
