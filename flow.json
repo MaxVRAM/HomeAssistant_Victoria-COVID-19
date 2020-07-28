@@ -130,7 +130,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1510,
+        "x": 970,
         "y": 160,
         "wires": [
             []
@@ -166,7 +166,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 610,
+        "x": 590,
         "y": 160,
         "wires": [
             [
@@ -226,228 +226,6 @@
         "wires": []
     },
     {
-        "id": "708dcf8.64992b",
-        "type": "split",
-        "z": "40da5ad2.8aabf4",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 530,
-        "y": 260,
-        "wires": [
-            [
-                "6b07086b.e9416",
-                "43e54a6d.1e7fec"
-            ]
-        ]
-    },
-    {
-        "id": "6b07086b.e9416",
-        "type": "switch",
-        "z": "40da5ad2.8aabf4",
-        "name": "today",
-        "property": "parts.index",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "msg.parts.count-1",
-                "vt": "jsonata"
-            }
-        ],
-        "checkall": "true",
-        "repair": true,
-        "outputs": 1,
-        "x": 690,
-        "y": 240,
-        "wires": [
-            [
-                "8566b50c.4ba08"
-            ]
-        ]
-    },
-    {
-        "id": "43e54a6d.1e7fec",
-        "type": "switch",
-        "z": "40da5ad2.8aabf4",
-        "name": "yesterday",
-        "property": "parts.index",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "msg.parts.count-2",
-                "vt": "jsonata"
-            }
-        ],
-        "checkall": "true",
-        "repair": true,
-        "outputs": 1,
-        "x": 680,
-        "y": 280,
-        "wires": [
-            [
-                "1cf85c8c.af49e3"
-            ]
-        ]
-    },
-    {
-        "id": "8566b50c.4ba08",
-        "type": "change",
-        "z": "40da5ad2.8aabf4",
-        "name": "only VIC data",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload[\"VIC\"]",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 840,
-        "y": 240,
-        "wires": [
-            [
-                "86ba06fb.9b9af8"
-            ]
-        ]
-    },
-    {
-        "id": "1cf85c8c.af49e3",
-        "type": "change",
-        "z": "40da5ad2.8aabf4",
-        "name": "only VIC data",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload[\"VIC\"]",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 840,
-        "y": 280,
-        "wires": [
-            [
-                "e38bafb5.12473"
-            ]
-        ]
-    },
-    {
-        "id": "2c15ebe.e559914",
-        "type": "function",
-        "z": "40da5ad2.8aabf4",
-        "name": "today - yesterday",
-        "func": "var value = {payload:(msg.payload.today[0]-msg.payload.yesterday[0])};\nreturn value;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1330,
-        "y": 260,
-        "wires": [
-            [
-                "4eeb6da3.14ce6c"
-            ]
-        ]
-    },
-    {
-        "id": "43d5e3ca.2cfd24",
-        "type": "join",
-        "z": "40da5ad2.8aabf4",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 1170,
-        "y": 260,
-        "wires": [
-            [
-                "2c15ebe.e559914"
-            ]
-        ]
-    },
-    {
-        "id": "e38bafb5.12473",
-        "type": "change",
-        "z": "40da5ad2.8aabf4",
-        "name": "topic: yesterday",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "yesterday",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1020,
-        "y": 280,
-        "wires": [
-            [
-                "43d5e3ca.2cfd24"
-            ]
-        ]
-    },
-    {
-        "id": "86ba06fb.9b9af8",
-        "type": "change",
-        "z": "40da5ad2.8aabf4",
-        "name": "topic: today",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "today",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1030,
-        "y": 240,
-        "wires": [
-            [
-                "43d5e3ca.2cfd24"
-            ]
-        ]
-    },
-    {
         "id": "4eeb6da3.14ce6c",
         "type": "ha-entity",
         "z": "40da5ad2.8aabf4",
@@ -482,7 +260,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1540,
+        "x": 1000,
         "y": 260,
         "wires": [
             []
@@ -548,7 +326,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
+        "x": 430,
         "y": 380,
         "wires": [
             [
@@ -566,7 +344,7 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 610,
+        "x": 590,
         "y": 380,
         "wires": [
             [
@@ -593,7 +371,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 860,
+        "x": 780,
         "y": 380,
         "wires": [
             [
@@ -636,7 +414,7 @@
         "outputLocation": "",
         "outputLocationType": "none",
         "inputOverride": "allow",
-        "x": 1520,
+        "x": 980,
         "y": 380,
         "wires": [
             []
@@ -662,11 +440,27 @@
         "start": "",
         "inout": "out",
         "property": "payload",
-        "x": 410,
+        "x": 590,
         "y": 260,
         "wires": [
             [
-                "708dcf8.64992b"
+                "564b2fa5.94e01"
+            ]
+        ]
+    },
+    {
+        "id": "564b2fa5.94e01",
+        "type": "function",
+        "z": "40da5ad2.8aabf4",
+        "name": "Get Vic Cases Daily",
+        "func": "var total = Object.keys(msg.payload).length;\n//var difference = msg.payload[total-1].VIC-msg.payload[total-2].VIC;\n//return {payload:difference};\n\nvar input = msg.payload;\nvar data = [], date;\n\nfor (date in msg.payload) {\n    data.push(date);\n}\n\nvar today = data[data.length-1];// - data[data.length-2];\nvar yesterday = data[data.length-2];\n\nvar result = input[today].VIC[0] - input[yesterday].VIC[0];\n\n//return {payload:msg.payload[total-1]};\nreturn {payload:result};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 780,
+        "y": 260,
+        "wires": [
+            [
+                "4eeb6da3.14ce6c"
             ]
         ]
     },
