@@ -20,9 +20,18 @@ This is a Node-RED flow and example card to pull the latest Australia/Victoria C
 
 ## Select your locale
 
+### Firefox
 1. Open the [Victorian Covid feed json](https://interactive.guim.co.uk/covidfeeds/victoria.json) and find the ID of your locale.
 2. Open up the flow in Node-RED, double click on the `locale` node and change the ID (default is Moreland, 45).
 3. Deploy!
+
+### Non index displaying JSON readers
+
+Firefox will automagically display the JSON file with an index of the locale that you can replace in the Node-RED flow as described above. Other browsers might not display the index. If that's the case, try this:
+
+1. Go here: https://jsoneditoronline.org/
+2. Click `Open` > `Open from URL` and paste the [Victorian Covid feed json](https://interactive.guim.co.uk/covidfeeds/victoria.json)
+3. Click the `Copy >` button between the two panels and you should be able to search the list for your locale, that is listed under the index number of the locale that you can then enter using the steps above.
 
 ![Covid-19 Flow](covid-19-flow.jpg)
 
