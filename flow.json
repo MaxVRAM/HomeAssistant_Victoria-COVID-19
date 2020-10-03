@@ -13,7 +13,7 @@
         "name": "state cases",
         "method": "GET",
         "ret": "obj",
-        "paytoqs": false,
+        "paytoqs": "ignore",
         "url": "https://raw.githubusercontent.com/covid-19-au/covid-19-au.github.io/prod/src/data/stateCaseData.json",
         "tls": "",
         "persist": false,
@@ -141,13 +141,13 @@
         "type": "inject",
         "z": "40da5ad2.8aabf4",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "3600",
         "crontab": "",
         "once": true,
         "onceDelay": "30",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 110,
         "y": 160,
         "wires": [
@@ -181,7 +181,7 @@
         "name": "state cases",
         "method": "GET",
         "ret": "obj",
-        "paytoqs": false,
+        "paytoqs": "ignore",
         "url": "https://raw.githubusercontent.com/covid-19-au/covid-19-au.github.io/prod/src/data/state.json",
         "tls": "",
         "persist": false,
@@ -200,13 +200,13 @@
         "type": "inject",
         "z": "40da5ad2.8aabf4",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "3600",
         "crontab": "",
         "once": true,
         "onceDelay": "30",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 110,
         "y": 260,
         "wires": [
@@ -280,7 +280,7 @@
         "proxy": "",
         "authType": "",
         "x": 270,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "9f89f5ee.bb3dd8"
@@ -292,15 +292,15 @@
         "type": "inject",
         "z": "40da5ad2.8aabf4",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
         "repeat": "3600",
         "crontab": "",
         "once": true,
         "onceDelay": "30",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 110,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "4141ba11.d94e34"
@@ -327,7 +327,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "5a22148b.f4b4ec"
@@ -345,7 +345,7 @@
         "inout": "out",
         "property": "payload",
         "x": 590,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "977b4662.8b88"
@@ -372,7 +372,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "a95a84ad.096a78"
@@ -415,7 +415,7 @@
         "outputLocationType": "none",
         "inputOverride": "allow",
         "x": 980,
-        "y": 380,
+        "y": 460,
         "wires": [
             []
         ]
@@ -427,7 +427,7 @@
         "name": "Edit the above payload [<index>] to change the locale displayed",
         "info": "",
         "x": 450,
-        "y": 440,
+        "y": 520,
         "wires": []
     },
     {
@@ -444,7 +444,8 @@
         "y": 260,
         "wires": [
             [
-                "564b2fa5.94e01"
+                "564b2fa5.94e01",
+                "6d58927c.e10314"
             ]
         ]
     },
@@ -456,12 +457,73 @@
         "func": "var total = Object.keys(msg.payload).length;\n//var difference = msg.payload[total-1].VIC-msg.payload[total-2].VIC;\n//return {payload:difference};\n\nvar input = msg.payload;\nvar data = [], date;\n\nfor (date in msg.payload) {\n    data.push(date);\n}\n\nvar today = data[data.length-1];// - data[data.length-2];\nvar yesterday = data[data.length-2];\n\nvar result = input[today].VIC[0] - input[yesterday].VIC[0];\n\n//return {payload:msg.payload[total-1]};\nreturn {payload:result};",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 780,
         "y": 260,
         "wires": [
             [
                 "4eeb6da3.14ce6c"
             ]
+        ]
+    },
+    {
+        "id": "6d58927c.e10314",
+        "type": "function",
+        "z": "40da5ad2.8aabf4",
+        "name": "Fortnight Average",
+        "func": "var input = msg.payload;\nvar data = [], date;\n\nfor (date in msg.payload) {\n    data.push(date);\n}\n\nvar last14days = 0;\n\nfor (i = 1; i < 15; i++)\n{\n    last14days += input[data[data.length-i]].VIC[0] - input[data[data.length-i-1]].VIC[0];\n}\n\nvar result = last14days / 14;\n\nreturn {payload:result};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 770,
+        "y": 320,
+        "wires": [
+            [
+                "3fc3c1ba.d26796"
+            ]
+        ]
+    },
+    {
+        "id": "3fc3c1ba.d26796",
+        "type": "ha-entity",
+        "z": "40da5ad2.8aabf4",
+        "name": "Covid Average",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "Covid Average"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": "mdi:calendar"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 980,
+        "y": 320,
+        "wires": [
+            []
         ]
     },
     {
