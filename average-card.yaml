@@ -1,0 +1,28 @@
+decimals: 0
+entities:
+  - color: var(--accent-color)
+    entity: sensor.covid_19_new
+    name: New Cases
+  - color: var(--colour-silver)
+    entity: sensor.covid_average
+    name: Average
+    show_state: true
+    y_axis: secondary
+font_size: 90
+height: 100
+hours_to_show: 336
+line_width: 2
+lower_bound: 0
+lower_bound_secondary: 0
+name: Daily Victorian Cases (2 Weeks)
+points_per_hour: 0.0832
+show:
+  extrema: false
+  fill: true
+  icon: false
+  labels: true
+  lables_secondary: true
+  name: true
+  points: false
+smoothing: true
+type: 'custom:mini-graph-card'
