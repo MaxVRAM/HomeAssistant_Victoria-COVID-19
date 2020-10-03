@@ -53,7 +53,9 @@ To use my example card, you need the following custom cards from HACS:
  - mini-graph-card
  - vertical-stack
  
- Simply copy the code from the [card.yaml](card.yaml) file in this repository and paste it into a new manual entity.  
+ Simply copy the code from either of the two card example yaml files and paste it into a new manual entity.:
+  - [card.yaml](card.yaml) for a detailed card without the average.
+  - [covid_average.yaml](covid_average.yaml) if you're only interested in the 2 week average.
  
  
  ## Resources
