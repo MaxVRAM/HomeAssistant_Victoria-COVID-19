@@ -3,12 +3,14 @@
 This is a Node-RED flow and example card to pull the latest Australia/Victoria COVID-19 stats from open datasets. It contains both Victoria-wide and locale-based datasets.
 
 
- ## UPDATED
+ ## Updated "2 Week Average" version
  
  I've just updated the flow to add the Covid average in Victoria over 14 days to suit the current plan moving out of lockdown.
  If you're updating from a previous version, you'll need to update the flow with the new flow.json, and create a new manual card in lovelace, then copy in the covid_average.yaml code for the below card:
  
 ![Covid-19 Average Card](covid_average.jpg)
+
+## Older detailed version
 
 ![Covid-19 Example Card](covid-19-card.jpg)
  
